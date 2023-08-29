@@ -7,7 +7,7 @@ const { authRouter, profileRouter } = require("./app/routes");
 const app = express();
 
 const corsOptions = {
-  origin: "https://localhost:8081",
+  origin: "http://127.0.0.1:5173",
 };
 
 const DATABASe_URL =

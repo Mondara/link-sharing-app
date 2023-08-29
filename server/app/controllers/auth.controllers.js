@@ -27,13 +27,15 @@ const signUp = (req, res) => {
 };
 
 const signIn = (req, res) => {
+  console.log(req.body);
+
   UserModel.findOne({
     email: req.body.email,
   }).then((user) => {
     if (!user) return res.status(404).send({ message: "No User found!" });
 
     if (!bcrypt.compareSync(req.body.password, user.password))
-      return res.status(401).send({ message: "Invalid password" });
+      return res.status(401).send({ message: "Invalid Password" });
 
     const token = jwt.sign({ id: user.email }, process.env.SECRET, {
       algorithm: "HS256",

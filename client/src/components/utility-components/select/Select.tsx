@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, FC, SelectHTMLAttributes } from 'react';
+import React, { useEffect, useState, useRef, FC, SelectHTMLAttributes } from 'react';
 
 import { ReactComponent as DownArrow } from '../../../assets/images/icon-chevron-down.svg';
 import { ReactComponent as UpArrow } from '../../../assets/images/icon-chevron-up.svg';

@@ -8,3 +8,6 @@ export { ReactComponent as TwitchIcon } from "./images/icon-twitch.svg";
 export { ReactComponent as TwitterIcon } from "./images/icon-twitter.svg";
 export { ReactComponent as YoutubeIcon } from "./images/icon-youtube.svg";
 export { ReactComponent as HashnodeIcon } from "./images/icon-hashnode.svg";
+
+export { ReactComponent as LinkHeaderIcon } from "./images/icon-links-header.svg";
+export { ReactComponent as ProfileDetailsHeaderIcon } from "./images/icon-profile-details-header.svg";

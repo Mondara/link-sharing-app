@@ -23,7 +23,7 @@ export const TextField: FC<Props> = ({ labelText, error, errorMessage, icon, ...
                     <span>{icon}</span>
                 )}
 
-                <input className="body-md text-field-input" type="text" id="text_field" ref={inputRef} {...rest} />
+                <input id="text_field" className="body-md text-field-input" type="text" ref={inputRef} {...rest} />
                 {error && (
                     <span className="body-sm ml-auto">{errorMessage}</span>
                 )}

@@ -16,6 +16,11 @@ export default {
     fontFamily: {
       "Instrument Sans": ["Instrument Sans"],
     },
+    extend: {
+      gridTemplateRows: {
+        layout: "10% 90%",
+      },
+    },
   },
   plugins: [],
 };

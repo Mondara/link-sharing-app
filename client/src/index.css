@@ -121,10 +121,12 @@ a {
 
 .btn-primary {
   background: theme("colors.purple");
+  color: theme("colors.white");
 }
 
 .btn-secondary {
   border: 1px solid theme("colors.purple");
+  color: theme("colors.purple");
 }
 
 @layer utilities {
@@ -134,8 +136,7 @@ a {
   }
 
   .btn-secondary-active {
-    border: 1px solid theme("colors.purple");
-    background: theme("colors.purple");
+    background: theme("colors.light-purple");
   }
 
   .btn-primary-disabled {
@@ -242,4 +243,45 @@ a {
   flex-direction: column;
   align-items: flex-start;
   gap: 1.5rem;
+}
+
+/* ---- Profile Page ---- */
+/* -- Header -- */
+.profile-header-container-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 1rem 1rem 1rem 1.5rem;
+  margin: 1.5rem;
+}
+
+.profile-header-container-style {
+  border-radius: 0.75rem;
+  background: theme("colors.white");
+  color: theme("colors.gray");
+}
+
+.tab-layout {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.6875rem 1.6875rem;
+  border-radius: 0.5rem;
+}
+
+.tab-text {
+  @apply heading-sm;
+}
+
+@layer utilities {
+  .tab-active {
+    background: theme("colors.light-purple");
+    color: theme("colors.purple");
+  }
+  .tab-hover {
+    color: theme("colors.purple");
+  }
 }

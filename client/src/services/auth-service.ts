@@ -2,10 +2,10 @@ import axios from "axios";
 
 const API_URL = "http://localhost:9000/auth/";
 
-export const login = (username: string, password: string) => {
+export const login = async (email: string, password: string) => {
   return axios
     .post(API_URL + "signin", {
-      username,
+      email,
       password,
     })
     .then((response) => {
@@ -17,9 +17,9 @@ export const login = (username: string, password: string) => {
     });
 };
 
-export const register = (username: string, password: string) => {
+export const register = (email: string, password: string) => {
   return axios.post(API_URL + "signup", {
-    username,
+    email,
     password,
   });
 };
