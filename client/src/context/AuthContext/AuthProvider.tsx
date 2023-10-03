@@ -58,12 +58,16 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
             }));
 
         } catch (err) {
-            console.error("Login Failed: " + err);
+            if (err instanceof Error) {
+                const error: Error = err;
+                setError(prev => ({
+                    ...prev,
+                    loginError: error?.message
+                }));
+            } else {
+                console.error(err)
+            }
 
-            setError(prev => ({
-                ...prev,
-                loginError: err.message
-            }));
             setCurrentUser(null);
         } finally {
             setLoading(false);
@@ -108,10 +112,13 @@ export const AuthProvider: FC<{ children: ReactNode }> = ({ children }) => {
             }));
         } catch (err) {
             console.error("Registering Failed: " + err);
+            const error = err as Error
+
             setError(prev => ({
                 ...prev,
-                registerError: err.message
+                registerError: error.message
             }));
+
         } finally {
             setLoading(false)
         }

@@ -20,7 +20,9 @@ export const TextField: FC<Props> = ({ labelText, error, errorMessage, icon, ...
             )}
             <div
                 className={`text-field-container text-field-container-styles focus-within:text-field-container-styles-active ${error ? "text-field-container-styles-error" : ''}`}
-                onClick={() => inputRef.current?.focus()}>
+                onClick={() => inputRef.current?.focus()}
+            >
+
                 {icon && (
                     <span>{icon}</span>
                 )}

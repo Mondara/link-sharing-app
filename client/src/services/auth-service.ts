@@ -3,25 +3,25 @@ import axios from "axios";
 const API_URL = "http://localhost:9000/auth/";
 
 export const loginRequest = async (email: string, password: string) => {
-  return axios
-    .post(API_URL + "signin", {
+  try {
+    const { data } = await axios.post(API_URL + "signin", {
       email,
       password,
-    })
-    .then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
-      return response.data.user;
-    })
-    .catch((err) => {
-      if (err.response) {
-        throw new Error(err.response.data.message);
-      } else {
-        throw new Error(err.message);
-      }
     });
+
+    if (data.accessToken) {
+      localStorage.setItem("user", JSON.stringify(data));
+    }
+
+    return data.user;
+  } catch (err) {
+    if (axios.isAxiosError(err)) {
+      console.log(err);
+      throw new Error(err?.response?.data.message);
+    } else {
+      console.log(err);
+    }
+  }
 };
 
 export const registerRequest = async (email: string, password: string) => {
@@ -30,11 +30,15 @@ export const registerRequest = async (email: string, password: string) => {
       email,
       password,
     })
+    .then((response) => {
+      return response.data.message;
+    })
     .catch((err) => {
-      if (err.response) {
-        throw new Error(err.response.data.message);
+      if (axios.isAxiosError(err)) {
+        console.log(err);
+        throw new Error(err?.response?.data.message);
       } else {
-        throw new Error(err.message);
+        console.log(err);
       }
     });
 };

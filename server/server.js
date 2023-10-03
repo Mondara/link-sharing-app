@@ -10,9 +10,6 @@ const corsOptions = {
   origin: "http://127.0.0.1:5173",
 };
 
-const DATABASe_URL =
-  "mongodb+srv://Mondara:Thotage123@userdatabase.jbhktrt.mongodb.net/?retryWrites=true&w=majority";
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -26,7 +23,7 @@ app.use(function (req, res, next) {
 });
 
 db.mongoose
-  .connect(DATABASe_URL, {
+  .connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
