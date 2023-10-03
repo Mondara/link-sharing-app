@@ -7,6 +7,7 @@ import { getUserProfileData, postUserProfileData } from "@/services";
 import { emailValidator, isAuthenticated } from "@/utils";
 import { getPlatformURL } from "@/assets";
 import { Errors } from "./ProfileContext"
+import { useAuth } from "..";
 
 export const useProfileContext = () => {
     const context = React.useContext(ProfileContext);
@@ -19,6 +20,8 @@ export const useProfileContext = () => {
 }
 
 export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+    const { currentUser } = useAuth();
+
     const [profileData, setProfileData] = React.useState<ProfileData>({
         firstName: "",
         lastName: "",
@@ -267,14 +270,14 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
 
     React.useEffect(() => {
-        if (!isAuthenticated()) return
+        if (currentUser === null || !isAuthenticated()) return
 
         const loadData = async () => {
             await loadProfileData()
         }
 
         loadData();
-    }, [])
+    }, [currentUser])
 
     React.useEffect(() => {
         isSavable()

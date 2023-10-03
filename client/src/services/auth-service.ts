@@ -3,7 +3,7 @@ import { API_URL } from "./api-url";
 
 export const loginRequest = async (email: string, password: string) => {
   try {
-    const { data } = await axios.post(`${API_URL}/signin`, {
+    const { data } = await axios.post(`${API_URL}/auth/signin`, {
       email,
       password,
     });
@@ -25,7 +25,7 @@ export const loginRequest = async (email: string, password: string) => {
 
 export const registerRequest = async (email: string, password: string) => {
   return axios
-    .post(`${API_URL}/signup`, {
+    .post(`${API_URL}/auth/signup`, {
       email,
       password,
     })
