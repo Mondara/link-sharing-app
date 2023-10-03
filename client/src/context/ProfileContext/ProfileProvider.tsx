@@ -26,11 +26,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
         firstName: "",
         lastName: "",
         email: "",
-        links: [{
-            id: `1`,
-            platform: "GitHub",
-            link: ""
-        }],
+        links: [],
     });
 
     const [errors, setErrors] = React.useState<Errors>({

@@ -124,13 +124,13 @@ export const getPlatformBackgroundColor = (platform: PlatformOptions) => {
 }
 
 export const platformOptions: PlatformOptionData[] = [
-    { label: 'GitHub', icon: <GithubIcon />, placeholderLink: "https://github.com/" },
     { label: 'Frontend Mentor', icon: <FrontendMentorIcon />, placeholderLink: "https://frontendmentor.io/profile/" },
+    { label: 'GitHub', icon: <GithubIcon />, placeholderLink: "https://github.com/" },
     { label: 'Twitter', icon: <TwitterIcon />, placeholderLink: "https://twitter.com/" },
+    { label: 'Twitch', icon: <TwitchIcon />, placeholderLink: "https://www.twitch.tv/" },
     { label: 'Linkedin', icon: <LinkedinIcon />, placeholderLink: "https://www.linkedin.com/in/" },
     { label: 'Youtube', icon: <YoutubeIcon />, placeholderLink: "https://www.youtube.com/channel/" },
     { label: 'Facebook', icon: <FacebookIcon />, placeholderLink: "https://www.facebook.com/" },
-    { label: 'Twitch', icon: <TwitchIcon />, placeholderLink: "https://www.twitch.tv/" },
     { label: 'Dev.to', icon: <DevtoIcon />, placeholderLink: "https://dev.to/" },
     { label: 'Codewars', icon: <CodewarsIcon />, placeholderLink: "https://www.codewars.com/users/" },
     { label: 'Codepen', icon: <CodepenIcon />, placeholderLink: "https://codepen.io/" },
@@ -141,13 +141,13 @@ export const platformOptions: PlatformOptionData[] = [
 ]
 
 export const getPlatformURL = {
-    'GitHub': "https://github.com/",
     'Frontend Mentor': "https://frontendmentor.io/profile/",
+    'GitHub': "https://github.com/",
     'Twitter': "https://twitter.com/",
+    'Twitch': "https://www.twitch.tv/",
     'Linkedin': "https://www.linkedin.com/in/",
     'Youtube': "https://www.youtube.com/channel/",
     'Facebook': "https://www.facebook.com/",
-    'Twitch': "https://www.twitch.tv/",
     'Dev.to': "https://dev.to/",
     'Codewars': "https://www.codewars.com/users/",
     'Codepen': "https://codepen.io/",

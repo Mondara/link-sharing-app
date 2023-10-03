@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, FC, SelectHTMLAttributes } from 're
 
 import { ReactComponent as DownArrow } from '../../../assets/images/icon-chevron-down.svg';
 import { ReactComponent as UpArrow } from '../../../assets/images/icon-chevron-up.svg';
-import { PlatformOptions } from '@/types';
+import { PlatformOptions, PlatformOptionData } from '@/types';
 
 interface SelectOption {
     label: PlatformOptions;
@@ -10,20 +10,26 @@ interface SelectOption {
 }
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
-    options: SelectOption[];
-    defaultSelectedOption?: SelectOption;
+    options: PlatformOptionData[];
+    selectedOption?: PlatformOptionData;
     callback: (selectOption: PlatformOptions) => void;
 
 }
 
-export const Select: FC<Props> = ({ options, defaultSelectedOption, callback }) => {
-    const [selected, setSelected] = useState<SelectOption>(defaultSelectedOption || options[0]);
+export const Select: FC<Props> = ({ options, selectedOption = options[3], callback }) => {
+    const [selected, setSelected] = useState<PlatformOptionData>(selectedOption);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const selectRef = useRef<HTMLDivElement>(null);
+
+
+    console.log(selectedOption, selected)
 
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     const onSelect = (option: SelectOption) => {
+        console.log("setting")
+
+
         setSelected(option)
         callback(option.label)
         setIsOpen(false);

@@ -55,7 +55,7 @@ export const LinkCard: React.FC<Props> = ({ data, index }) => {
 
                         <div className="link-platform-layout">
                             <p className='body-sm text-dark-grey mb-1'>Platform</p>
-                            <PlatformSelect callback={handlePlatformUpdate} />
+                            <PlatformSelect callback={handlePlatformUpdate} selectedOption={data.platform} />
                         </div>
 
                         <div className="link-link-layout">
