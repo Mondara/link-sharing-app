@@ -1,27 +1,74 @@
-# React + TypeScript + Vite
+# Frontend Mentor - Link-sharing app solution
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a solution to the [Link-sharing app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/linksharing-app-Fbt7yweGsT). 
 
-Currently, two official plugins are available:
+## Table of contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-## Expanding the ESLint configuration
+## Overview
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### The challenge
 
-- Configure the top-level `parserOptions` property like this:
+Users should be able to:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Create, read, update, delete links and see previews in the mobile mockup
+- Receive validations if the links form is submitted without a URL or with the wrong URL pattern for the platform
+- Drag and drop links to reorder them
+- Add profile details like profile picture, first name, last name, and email
+- Receive validations if the profile details form is saved with no first or last name
+- Preview their devlinks profile and copy the link to their clipboard
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+- Save details to a database.
+- Create an account and log in (added user authentication to the full-stack app)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Screenshot
+
+![](./screenshot.jpg)
+
+### Links
+
+- [Solution URL](https://your-solution-url.com)
+- [Live Site URL](https://link-app-u33e.onrender.com)
+
+## My process
+
+### Built with
+Built using MERN Stack with Tailwind.
+- [MongoDB](https://www.mongodb.com/) - Document-oriented database
+- [Express](https://expressjs.com/) -  Back end web application framework
+- [React](https://reactjs.org/) - JS library
+- [Node.js](https://nodejs.org/en) - JS Runetime Enviroment
+- [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework
+
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/) - Deploy MongoDB Database
+- [Cloudinary](https://cloudinary.com/) - Store Images
+
+### What I learned
+I learned how to build a full-stack application using the MERN STACK.
+ - Implement Authentication & Authorisation
+ - Implement React Router
+ - Build Drag&Drop Functionality
+ 
+
+### Useful resources
+
+- [User Authentication with JWT example](https://www.bezkoder.com/react-express-authentication-jwt/#Front-end_with_React_React_Router) - This showed me how to implement Authentication & Authorisation.
+- [React-router Auth Router Provider Example](https://stackblitz.com/github/remix-run/react-router/tree/main/examples/auth-router-provider?file=src%2FApp.tsx) - This is show me how to implement React Router with Authentication.
+
+
+## Author
+
+- Website - [Mondara](https://mondarathotage.com/)
+- Linkedin - [@Mondara](https://www.linkedin.com/in/mondara-thotage/)
+- Github - [@Mondara](https://github.com/Mondara)
+
