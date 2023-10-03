@@ -4,3 +4,7 @@ export const emailValidator = (email: string) => {
 
   return regexEmail.test(email);
 };
+
+export const passwordValidator = (password: string) => {
+  return password.length > 8;
+};

@@ -20,10 +20,10 @@ const signUp = (req, res) => {
       }).save();
     })
     .catch((err) => {
-      res.status(500).send({ message: err.message });
+      return res.status(500).send({ message: err.message });
     });
 
-  res.status(200).send({ message: "User was registered successfully!" });
+  return res.status(200).send({ message: "User was registered successfully!" });
 };
 
 const signIn = (req, res) => {
@@ -43,7 +43,7 @@ const signIn = (req, res) => {
       expiresIn: 86400, // 24 hours
     });
 
-    res.status(200).send({ accessToken: token });
+    return res.status(200).send({ user: req.body.email, accessToken: token });
   });
 };
 

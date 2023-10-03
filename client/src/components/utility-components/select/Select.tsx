@@ -2,21 +2,22 @@ import React, { useEffect, useState, useRef, FC, SelectHTMLAttributes } from 're
 
 import { ReactComponent as DownArrow } from '../../../assets/images/icon-chevron-down.svg';
 import { ReactComponent as UpArrow } from '../../../assets/images/icon-chevron-up.svg';
+import { PlatformOptions } from '@/types';
 
 interface SelectOption {
-    label: string;
+    label: PlatformOptions;
     icon?: JSX.Element;
 }
 
 interface Props extends SelectHTMLAttributes<HTMLSelectElement> {
     options: SelectOption[];
-    defaultSelectedOption: SelectOption;
-    callback: (selectOption: string) => void;
+    defaultSelectedOption?: SelectOption;
+    callback: (selectOption: PlatformOptions) => void;
 
 }
 
 export const Select: FC<Props> = ({ options, defaultSelectedOption, callback }) => {
-    const [selected, setSelected] = useState<SelectOption>(defaultSelectedOption);
+    const [selected, setSelected] = useState<SelectOption>(defaultSelectedOption || options[0]);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
@@ -43,7 +44,7 @@ export const Select: FC<Props> = ({ options, defaultSelectedOption, callback }) 
     })
 
     return (
-        <div className="relative" ref={selectRef}>
+        <div className="relative w-full h-full" ref={selectRef}>
             <div
                 className="dropdown-layout dropdown-style hover:dropdown-styles-active body-md w-full"
                 onClick={toggleDropdown}
@@ -56,7 +57,7 @@ export const Select: FC<Props> = ({ options, defaultSelectedOption, callback }) 
 
             </div>
             {isOpen && (
-                <div className=" absolute z-10 dropdown-list-layout dropdown-list-styles w-full">
+                <div className="absolute z-10 dropdown-list-layout dropdown-list-styles w-full">
                     {options.map((option, idx) => (
                         <div key={option.label} onClick={() => onSelect(option)}
                             className="group w-full flex flex-col justify-start items-start gap-3">

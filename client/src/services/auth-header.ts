@@ -1,5 +1,6 @@
-export default function authHeader() {
+export const authHeader = () => {
   const userStr = localStorage.getItem("user");
+
   let user = null;
   if (userStr) user = JSON.parse(userStr);
 
@@ -10,4 +11,4 @@ export default function authHeader() {
     // return { Authorization: '' }; // for Spring Boot back-end
     return { "x-access-token": null }; // for Node Express back-end
   }
-}
+};

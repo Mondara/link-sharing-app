@@ -1,2 +1,6 @@
-export * from "./page";
-export * from "./layout";
+export * from "./Links";
+export * from "./Login";
+export * from "./Signup";
+
+export * from "./ProfileDetails";
+export * from "./Preview";

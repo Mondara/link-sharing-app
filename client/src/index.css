@@ -77,7 +77,7 @@ a {
 
 .text-field-container-styles {
   border-radius: 0.5rem;
-  border: 1px solid theme("colors.border-gray");
+  border: 1px solid theme("colors.border-grey");
   background: white;
   color: theme("colors.dark-grey");
 }
@@ -165,7 +165,7 @@ a {
 
 .dropdown-style {
   border-radius: 0.5rem;
-  border: 1px solid theme("colors.border-gray");
+  border: 1px solid theme("colors.border-grey");
   background: white;
 }
 
@@ -182,7 +182,7 @@ a {
 
 .dropdown-list-styles {
   border-radius: 0.5rem;
-  border: 1px solid theme("colors.border-gray");
+  border: 1px solid theme("colors.border-grey");
   background: white;
 
   /* shadow */
@@ -206,7 +206,7 @@ a {
 }
 
 .dropdown-list-divider-styles {
-  background: theme("colors.border-gray");
+  background: theme("colors.border-grey");
 }
 
 .dropdown-option {
@@ -246,21 +246,52 @@ a {
 }
 
 /* ---- Profile Page ---- */
-/* -- Header -- */
-.profile-header-container-layout {
+.profile-header-outside-container-layout {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
 
+  padding: 1.5rem;
+
+  width: 100%;
+  height: 10%;
+}
+
+.profile-body-outside-container-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  flex: 1 0 0;
+
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+
+  width: 100%;
+  height: 90%;
+}
+
+/* -- Header -- */
+
+.profile-header-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  align-self: stretch;
+
   padding: 1rem 1rem 1rem 1.5rem;
-  margin: 1.5rem;
 }
 
 .profile-header-container-style {
   border-radius: 0.75rem;
   background: theme("colors.white");
-  color: theme("colors.gray");
+  color: theme("colors.grey");
+}
+
+.profile-header-inner-container-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tab-layout {
@@ -272,16 +303,361 @@ a {
   border-radius: 0.5rem;
 }
 
-.tab-text {
-  @apply heading-sm;
+.tab-styles {
+  color: theme("colors.grey");
+}
+
+#tab:hover {
+  color: theme("colors.purple");
+}
+
+.tab-active {
+  background: theme("colors.light-purple");
+  color: theme("colors.purple");
+}
+
+/* -- Phone Preview -- */
+.phone-preview-container-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 1.5rem;
+
+  width: 100%;
+  height: 100%;
+}
+
+.phone-preview-container-layout svg {
+  position: relative;
+}
+
+.phone-preview-container-styles {
+  border-radius: 0.75rem;
+  color: theme("colors.white");
+  background: theme("colors.white");
+}
+
+.phone-preview-links-container {
+  position: absolute;
+  top: 3.97rem;
+  bottom: 3.34rem;
+  right: 2.22rem;
+  left: 2.16rem;
+}
+
+/*-- PhoneMockup - Links -- */
+.phone-preview-profile-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5625rem;
+
+  margin-bottom: 2.7rem;
+}
+
+.phone-preview-profile-img-container {
+  width: 6rem;
+  height: 6rem;
+}
+
+.phone-preview-profile-img {
+  width: 100%;
+  height: 100%;
+
+  border-radius: 6rem;
+  border: 4px solid var(--Purple, #633cff);
+}
+
+.phone-preview-profile-details-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.phone-preview-profile-details-name {
+  font-family: Instrument Sans;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 150%;
+
+  color: theme("colors.dark-grey");
+}
+
+.phone-preview-profile-details-email {
+  font-family: Instrument Sans;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+
+  color: theme("colors.grey");
+}
+
+.phone-preview-link-container-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.6875rem 1rem;
+  height: 2.75rem;
+
+  gap: 0.5rem;
+}
+
+.phone-preview-link-text {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* -- Links -- */
+.profile-body-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  flex: 1 0 0;
+  gap: 2.5rem;
+
+  padding: 1rem;
+}
+
+.profile-body-container-styles {
+  background: theme("colors.white");
+  border-radius: 0.75rem;
+}
+
+.links-header-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  color: theme("colors.dark-grey");
+}
+
+.links-body-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.link-container-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 1.25rem;
+}
+
+.link-container-styles {
+  border-radius: 0.75rem;
+  background: theme("colors.light-grey");
+}
+
+.link-header-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.link-platform-layout,
+.link-link-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* -- No Links -- */
+.nolinks-container-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nolinks-text--layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* -- Link Button -- */
+.save-button-container {
+  padding: 1.5rem 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+}
+
+/* -- Indicator Component */
+.indicator-container {
+  @apply w-fit h-fit text-center rounded-lg p-4 flex gap-2;
+}
+
+/* ---- Profile Details ----*/
+.profileDetails-heading-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.profileDetails-body-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+/* --Profile Details - Picture -- */
+.avatar-container-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 1.25rem;
+}
+
+.avatar-container-styles {
+  border-radius: 0.75rem;
+  background: theme("colors.light-grey");
+}
+
+.avatar-inner-container-layout {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  gap: 1rem;
 }
 
 @layer utilities {
-  .tab-active {
-    background: theme("colors.light-purple");
-    color: theme("colors.purple");
+  .avatar-inner-container-mobile-layout {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .tab-hover {
-    color: theme("colors.purple");
+}
+
+.profilePricture-upload-container-layout {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  flex: 1 0 0;
+}
+
+/* -- DropDown Field -- */
+.dragdrop-container-layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+  padding: 3.8125rem 2.375rem 3.75rem 2.4375rem;
+  cursor: pointer;
+}
+
+.dragdrop-container-styles {
+  border-radius: 0.75rem;
+  background: theme("colors.light-purple");
+}
+
+.dragdrop-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dragdrop-element {
+  position: absolute;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+@layer utilities {
+  .dragdrop-container-hover {
+    opacity: 1;
+    color: white;
+    /* background-color: white; */
   }
+}
+
+/* -- Profile Details Input -- */
+
+.profileDetails-input-outercontainer-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+
+  padding: 1.25rem;
+}
+
+.profileDetails-input-outercontainer-styles {
+  border-radius: 0.75rem;
+  background: theme("colors.light-grey");
+}
+
+.profileDetails-input-container-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+  width: 100%;
+}
+
+/* ---- Preview ---- */
+.preview-header-outside-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+
+  padding: 1.5rem;
+}
+
+/* -- Preview Header -- */
+.preview-header-container-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: 0.5rem;
+
+  padding: 1rem 1rem 1rem 1.5rem;
+}
+
+.preview-header-container-style {
+  border-radius: 0.75rem;
+  background: theme("colors.white");
 }

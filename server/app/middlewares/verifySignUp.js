@@ -9,15 +9,15 @@ const verifySignUp = (req, res, next) => {
   })
     .then((email) => {
       if (email) {
-        res.status(400).send({ message: "Failed! Email is already in use!" });
-        return;
+        return res
+          .status(400)
+          .send({ message: "Failed! Email is already in use!" });
       }
 
-      next();
+      return next();
     })
     .catch((err) => {
-      res.status(500).send({ msg: err.message });
-      return;
+      return res.status(500).send({ msg: err.message });
     });
 };
 

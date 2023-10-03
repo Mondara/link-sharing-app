@@ -1,0 +1,15 @@
+export type PlatformOptions =
+  | "Frontend Mentor"
+  | "GitHub"
+  | "Twitter"
+  | "Twitch"
+  | "Linkedin"
+  | "Youtube"
+  | "Facebook"
+  | "Dev.to"
+  | "Codewars"
+  | "Codepen"
+  | "freeCodeCamp"
+  | "GitLab"
+  | "Hashnode"
+  | "Stack Overflow";
