@@ -2,8 +2,7 @@ import axios from "axios";
 
 import { authHeader } from "./auth-header";
 import { ProfileData } from "@/types";
-
-const API_URL = "http://localhost:9000/profile";
+import { API_URL } from "./api-url";
 
 export const getUserProfileDataFromName = async (
   name: string

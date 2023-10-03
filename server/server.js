@@ -7,7 +7,7 @@ const { authRouter, profileRouter } = require("./app/routes");
 const app = express();
 
 const corsOptions = {
-  origin: "http://127.0.0.1:5173",
+  origin: "https://link-app-mt.netlify.app",
 };
 
 app.use(cors(corsOptions));
