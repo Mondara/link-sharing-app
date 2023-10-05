@@ -38,6 +38,7 @@ export const router = createBrowserRouter(
               const response = await getUserProfileDataFromName(params.user);
               return response;
             } catch (err) {
+              console.error(err);
               return null;
             }
           }}
