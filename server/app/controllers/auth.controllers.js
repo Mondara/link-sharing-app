@@ -1,51 +1,47 @@
-require("dotenv").config();
+const asyncHandler = require("express-async-handler");
 
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const db = require("../models");
+const User = require("../models");
+const generateToken = require("../util/generateToken");
 
-const UserModel = db.UserModel;
-const ProfileModel = db.ProfileModel;
+// @desc Login
+// Route Post /auth/signin
+// @access Public
+const signIn = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-const signUp = (req, res) => {
-  new UserModel({
-    username: req.body.username,
-    email: req.body.email,
-    password: bcrypt.hashSync(req.body.password, 8),
-  })
-    .save()
-    .then((user) => {
-      new ProfileModel({
-        email: user.email,
-      }).save();
-    })
-    .catch((err) => {
-      return res.status(500).send({ message: err.message });
-    });
+  const user = await User.findOne({ email });
 
-  return res.status(200).send({ message: "User was registered successfully!" });
-};
+  if (user && (await user.matchPassword(password))) {
+    const token = generateToken(res, user._id);
 
-const signIn = (req, res) => {
-  console.log(req.body);
+    return res.status(200).send({ user: user._id, accessToken: token });
+  } else {
+    res.status(404);
+    throw new Error("No User found");
+  }
+});
 
-  UserModel.findOne({
-    email: req.body.email,
-  }).then((user) => {
-    if (!user) return res.status(404).send({ message: "No User found!" });
+// @desc SignUp
+// Route Post /auth/signup
+// @access Public
+const signUp = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
 
-    if (!bcrypt.compareSync(req.body.password, user.password))
-      return res.status(401).send({ message: "Invalid Password" });
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
 
-    const token = jwt.sign({ id: user.email }, process.env.SECRET, {
-      algorithm: "HS256",
-      allowInsecureKeySizes: true,
-      expiresIn: 86400, // 24 hours
-    });
+  const user = await User.create({ email, password });
 
-    return res.status(200).send({ user: req.body.email, accessToken: token });
-  });
-};
+  if (user) {
+    res.status(201).send({ message: "User created successfully" });
+  } else {
+    res.status(400);
+    throw new Error("Invalid User Data");
+  }
+});
 
 module.exports = {
   signUp,

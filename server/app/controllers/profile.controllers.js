@@ -1,84 +1,65 @@
-require("dotenv").config();
+const asyncHandler = require("express-async-handler");
 
-const db = require("../models");
+const User = require("../models");
 
-const ProfileModel = db.ProfileModel;
-
-const updateProfile = async (req, res) => {
-  console.log("Updating Profile Information.");
-  try {
-    const updateProfileRequest = {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      avatar: req.body.avatar,
-      links: req.body.links,
-    };
-
-    const updatedProfile = await ProfileModel.findOneAndUpdate(
-      { email: req.body.email },
-      updateProfileRequest,
-      { new: true } // Return the updated document
-    );
-
-    if (!updatedProfile) {
-      return res.status(404).send({ message: "User not found" });
-    }
-
-    return res.status(200).send({
-      email: updatedProfile.email,
-      firstName: updatedProfile.firstName,
-      lastName: updatedProfile.lastName,
-      avatar: updatedProfile.avatar,
-      links: updatedProfile.links,
-    });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).send({ message: "An error occurred" });
+// @desc Update User Details
+// Route Post /profile
+// @access Protected
+const updatedUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+  if (!user) {
+    res.status(404);
+    throw new Error("No user found");
   }
-};
 
-const getProfile = (req, res) => {
-  console.log("Getting Profile Information.");
-  let searchParams = {};
+  user.name = req.body.name || user.name;
+  user.email = req.body.email || user.email;
+  user.firstName = req.body.firstName || user.firstName;
+  user.lastName = req.body.lastName || user.lastName;
+  user.avatar = req.body.avatar || user.avatar;
+  user.links = req.body.links || user.links;
+
+  const updatedUser = await user.save();
+
+  res.status(200).json({
+    _id: updatedUser._id,
+    email: updatedUser.email,
+    firstName: updatedUser.firstName,
+    lastName: updatedUser.lastName,
+    avatar: updatedUser.avatar,
+    links: updatedUser.links,
+  });
+});
+
+// @desc Get User Details
+// Route Get /profile
+// @access Public/Protected
+const getProfile = asyncHandler(async (req, res) => {
+  let user;
 
   if (req.params?.user) {
     const [firstName, lastName] = req.params.user.split("-");
 
-    searchParams = {
-      firstName: firstName,
-      lastName: lastName,
-    };
+    user = await User.findOne({ firstName: firstName, lastName: lastName });
   } else {
-    searchParams = {
-      email: req.body.email,
-    };
+    user = await User.findById(req.user._id);
   }
 
-  ProfileModel.findOne(searchParams)
-    .then((profile) => {
-      if (!profile) return new Error("Authentication Error");
+  if (!user) {
+    res.status(400);
+    throw new Error("No user found");
+  }
 
-      try {
-        profile.links = profile.links ? JSON.parse(profile.links) : [];
-      } catch (e) {
-        console.log("Error parsing profile.links: " + e);
-        profile.links = [];
-      }
-
-      return res.status(200).json({
-        email: profile.email,
-        firstName: profile.firstName || "",
-        lastName: profile.lastName || "",
-        avatar: profile.avatar || "",
-        links: profile.links,
-      });
-    })
-    .catch((err) => {
-      return res.status(404).send({ message: "User not found!" });
-    });
-};
+  return res.status(200).json({
+    email: user.email,
+    firstName: user.firstName || "",
+    lastName: user.lastName || "",
+    avatar: user.avatar || "",
+    links: user.links || [],
+  });
+});
 
 module.exports = {
-  updateProfile,
+  updatedUser,
   getProfile,
 };

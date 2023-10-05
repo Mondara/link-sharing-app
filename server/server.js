@@ -1,13 +1,18 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const cors = require("cors");
 
-const db = require("./app/models");
-const { authRouter, profileRouter } = require("./app/routes");
+dotenv.config();
 
+const { connectDB } = require("./app/config");
+const { authRouter, profileRouter } = require("./app/routes");
+const { notFound, errorHandler } = require("./app/middlewares/errorHandlers");
+
+connectDB();
 const app = express();
 
 const corsOptions = {
-  origin: "https://link-app-u33e.onrender.com",
+  origin: "http://127.0.0.1:5173",
 };
 
 app.use(cors(corsOptions));
@@ -22,24 +27,14 @@ app.use(function (req, res, next) {
   next();
 });
 
-db.mongoose
-  .connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Successfully connect to MongoDB.");
-  })
-  .catch((err) => {
-    console.error("Connection error", err);
-    process.exit();
-  });
-
 app.use("/auth", authRouter);
 app.use("/profile", profileRouter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 9000;
 
 app.listen(PORT, () => {
-  console.log("Listening on Port " + PORT);
+  console.log("Listening on Port: " + PORT);
 });

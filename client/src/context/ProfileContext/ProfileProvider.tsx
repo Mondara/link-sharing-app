@@ -41,6 +41,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const [saveBtnDisabled, setSaveBtnDisabled] = React.useState(true);
     const [loading, setLoading] = React.useState(false);
+    const currentSavedProfileData = React.useRef<ProfileData | null>(null);
 
 
     const addLink = () => {
@@ -135,6 +136,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }))
 
             setSaveBtnDisabled(true);
+            return;
         } else {
             setErrors((prev) => ({
                 ...prev,
@@ -152,6 +154,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }))
 
             setSaveBtnDisabled(true);
+            return;
         } else {
             setErrors((prev) => ({
                 ...prev,
@@ -170,6 +173,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }))
 
             setSaveBtnDisabled(true);
+            return;
         } else if (!emailValidator(profileData.email)) {
             setErrors((prev) => ({
                 ...prev,
@@ -177,6 +181,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
             }))
 
             setSaveBtnDisabled(true);
+            return;
         } else {
             setErrors((prev) => ({
                 ...prev,
@@ -189,6 +194,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
         if (loading) {
             setSaveBtnDisabled(true);
+            return;
         } else {
             setSaveBtnDisabled(false);
         }
@@ -204,6 +210,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 }))
 
                 setSaveBtnDisabled(true);
+                return;
             } else if (!linkElement.link.startsWith(getPlatformURL[linkElement.platform])) {
                 setErrors((prev) => ({
                     ...prev,
@@ -214,6 +221,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
                 }))
 
                 setSaveBtnDisabled(true);
+                return;
 
             } else {
                 setErrors((prev) => ({
@@ -237,6 +245,7 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
         if (user) {
             setProfileData(user);
+            currentSavedProfileData.current = user;
         }
 
         setLoading(false);
@@ -254,13 +263,17 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
         setLoading(true);
 
         const { data } = await postUserProfileData(profileDataForm);
-
         setLoading(false);
 
         setProfileData({
             ...data,
             links: JSON.parse(data.links)
         });
+
+        currentSavedProfileData.current = {
+            ...data,
+            links: JSON.parse(data.links)
+        }
 
         toast.success("Updated Profile Details");
     }
@@ -271,6 +284,8 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
         const loadData = async () => {
             await loadProfileData()
         }
+
+
 
         loadData();
     }, [currentUser])

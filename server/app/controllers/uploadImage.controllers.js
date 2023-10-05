@@ -1,11 +1,8 @@
-const cloudinary = require("../config/cloudinaryConfig");
-const { Readable } = require("stream");
+const asyncHandler = require("express-async-handler");
+const { cloudinary } = require("../config");
 
-const uploadImageCloudinary = async (req, res, next) => {
-  console.log("Uploading image cloudinary");
-
+const uploadImageCloudinary = asyncHandler(async (req, res, next) => {
   if (!req.file) {
-    // return res.status(400).send("No file uploaded.");
     return next();
   }
 
@@ -30,10 +27,12 @@ const uploadImageCloudinary = async (req, res, next) => {
     });
 
     req.body.avatar = result.secure_url;
-    next();
+    return next();
   } catch (error) {
-    return res.status(500).send(`Failed to upload image: ${error.message}`);
+    res.status(500);
+    console.log(error);
+    throw new Error(`Failed to upload image: ${error.message}`);
   }
-};
+});
 
 module.exports = uploadImageCloudinary;

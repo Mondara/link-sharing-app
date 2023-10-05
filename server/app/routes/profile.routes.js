@@ -3,19 +3,19 @@ const express = require("express");
 const { verifyToken, upload, verifyImage } = require("../middlewares");
 const {
   getProfile,
-  updateProfile,
+  updatedUser,
   uploadImageCloudinary,
 } = require("../controllers");
 
 const profileRouter = express.Router();
 
-profileRouter.post(
+profileRouter.put(
   "/",
   verifyToken,
   upload,
   verifyImage,
   uploadImageCloudinary,
-  updateProfile
+  updatedUser
 );
 
 profileRouter.get("/:user", getProfile);

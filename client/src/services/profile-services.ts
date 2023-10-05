@@ -11,7 +11,7 @@ export const getUserProfileDataFromName = async (
     .get(`${API_URL}/profile/${name}`)
     .then(({ data }) => ({
       ...data,
-      links: JSON.parse(data.links),
+      links: !data.links ? [] : JSON.parse(data.links),
     }))
     .catch((err) => {
       throw new Error(err.message);
@@ -22,12 +22,19 @@ export const getUserProfileData = async (): Promise<ProfileData> => {
   const { data } = await axios.get(`${API_URL}/profile`, {
     headers: authHeader(),
   });
+
+  if (!data.links.length) {
+    data.links = [];
+  } else {
+    data.links = JSON.parse(data.links);
+  }
+
   return {
     ...data,
-    links: JSON.parse(data.links),
+    links: data.links,
   };
 };
 
 export const postUserProfileData = (userData: FormData) => {
-  return axios.post(`${API_URL}/profile`, userData, { headers: authHeader() });
+  return axios.put(`${API_URL}/profile`, userData, { headers: authHeader() });
 };

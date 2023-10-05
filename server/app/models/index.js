@@ -1,9 +1,3 @@
-const mongoose = require("mongoose");
+const User = require("./user.models");
 
-const db = {};
-
-db.mongoose = mongoose;
-db.UserModel = require("./user.models");
-db.ProfileModel = require("./profile.models");
-
-module.exports = db;
+module.exports = User;

@@ -21,9 +21,6 @@ export const Select: FC<Props> = ({ options, selectedOption = options[3], callba
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const selectRef = useRef<HTMLDivElement>(null);
 
-
-    console.log(selectedOption, selected)
-
     const toggleDropdown = () => setIsOpen(!isOpen);
 
     const onSelect = (option: SelectOption) => {
