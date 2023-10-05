@@ -17,15 +17,15 @@ export const PhoneMockup: React.FC<Props> = ({ profileData }) => {
                 <div className="relative">
                     <IllustrationPhoneMockup />
                     <div className="phone-preview-links-container">
-                        <div className={`phone-preview-profile-layout `}>
+                        <div className={`phone-preview-profile-layout min-h-[172px]`}>
                             <div className="phone-preview-profile-img-container">
                                 {profileData.avatar && (
                                     <img className="phone-preview-profile-img" src={getImageURL(profileData.avatar)} alt="Profile Avatar" />
                                 )}
                             </div>
-                            <div className="phone-preview-profile-details-layout bg-white">
-                                <p className={`phone-preview-profile-details-name text-center min-h-[1rem] min-w-[10rem] ${profileData.firstName || profileData.lastName ? "bg-white" : "bg-skelton-grey"}`}>{profileData.firstName} {profileData.lastName}</p>
-                                <p className={`phone-preview-profile-details-email min-h-[0.5rem] min-w-[4.5rem] ${profileData.email ? "bg-white" : "bg-skelton-grey"}`}>{profileData.email}</p>
+                            <div className={`phone-preview-profile-details-layout ${profileData.firstName || profileData.lastName || profileData.email ? "flex" : "hidden"}`}>
+                                <p className={`phone-preview-profile-details-name text-center min-h-[1rem] min-w-[10rem] bg-white`}>{profileData.firstName} {profileData.lastName}</p>
+                                <p className={`phone-preview-profile-details-email min-h-[0.5rem] min-w-[4.5rem] bg-white`}>{profileData.email}</p>
                             </div>
                         </div>
 

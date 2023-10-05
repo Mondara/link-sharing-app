@@ -44,8 +44,8 @@ export const LinkCard: React.FC<Props> = ({ data, index }) => {
                     <div className="link-container-layout link-container-styles w-full overflow-visible">
 
                         <div className="link-header-layout text-grey">
-                            <div className="flex items-center gap-2 text-grey" >
-                                <button {...provided.dragHandleProps}>
+                            <div className="flex items-center gap-2 text-grey" {...provided.dragHandleProps}>
+                                <button >
                                     <DragAndDropIcon />
                                 </button>
                                 <p className="heading-sm font-bold">Link #{index + 1}</p>
