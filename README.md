@@ -2,6 +2,9 @@
 
 This is a solution to the [Link-sharing app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/linksharing-app-Fbt7yweGsT). 
 
+This project is a Full-stack Link Sharing App for developers, built using React/Typescript, Node.js and MongoDB.
+It allows users to create a profile with a photo, name and social links and share it using a generated link.
+
 ## Table of contents
 
 - [Frontend Mentor - Link-sharing app solution](#frontend-mentor---link-sharing-app-solution)
@@ -30,8 +33,9 @@ Users should be able to:
 - Preview their devlinks profile and copy the link to their clipboard
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
-- Save details to a database.
-- Create an account and log in (added user authentication to the full-stack app)
+- **Bonus**Save details to a database.
+- **Bonus**Create an account and log in (added user authentication to the full-stack app)
+- **Bonus**Drag and drop image to upload profile picture
 
 ### Screenshot
 
@@ -45,20 +49,23 @@ Users should be able to:
 ## My process
 
 ### Built with
-Built using MERN Stack with Tailwind.
+Built using MERN Stack with Typescript and TailwindCSS.
 - [MongoDB](https://www.mongodb.com/) - Document-oriented database
-- [Express](https://expressjs.com/) -  Back end web application framework
 - [React](https://reactjs.org/) - JS library
+- [Typescript](https://www.typescriptlang.org/)
+- [TailwindCSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Node.js](https://nodejs.org/en) - JS Runetime Enviroment
-- [Tailwind](https://tailwindcss.com/) - A utility-first CSS framework
+- [Express](https://expressjs.com/) -  Back end web application framework
+
 
 - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/) - Deploy MongoDB Database
 - [Cloudinary](https://cloudinary.com/) - Store Images
+- [Render](https://render.com/) - Hosting Fronent and Backend
 
 ### What I learned
 I learned how to build a full-stack application using the MERN STACK.
  - Implement Authentication & Authorisation
- - Implement React Router
+ - Implement React Router with Authication & Authorisation
  - Build Drag&Drop Functionality
  
 
